@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_user_logged_in, only: [:show]
   def show
     @user = User.find(params[:id])
   end
@@ -21,7 +22,9 @@ class UsersController < ApplicationController
   
   private
   
+  #Strong Parameter
   def user_params
+    #Userモデルのフォームから得られるデータに関するものだと明示し、必要なカラムを許可
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
