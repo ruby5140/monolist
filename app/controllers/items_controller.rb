@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :require_user_logged_in
 
   def new
-    #カラの配列として初期化し、カラを明示
     @items = []
 
     @keyword = params[:keyword]
@@ -36,4 +35,3 @@ end
       image_url: image_url,
     }
   end
-end
